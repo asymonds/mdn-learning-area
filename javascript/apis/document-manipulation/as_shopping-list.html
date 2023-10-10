@@ -31,12 +31,33 @@
       const mainList = document.querySelector("ul");
       const input = document.querySelector("input");
       const btn = document.querySelector("button");
+      // console.log(mainList);
+      function addlistItem() {
+        const inputText = input.value;
 
-      function addlistItem(event) {
-        const inputText = input.textContent;
+        const listItem = document.createElement("li");
+        const listSpan = document.createElement("span");
+        const listButton = document.createElement("button");
 
-        mainList.createElement();
+        listItem.appendChild(listSpan);
+        listItem.appendChild(listButton);
+
+        listSpan.textContent = inputText;
+        listButton.textContent = "Delete";
+
+        listButton.addEventListener("click", (e) => {
+          const target = e.target.parentElement;
+          target.remove();
+        });
+        mainList.appendChild(listItem);
+        input.value = "";
+        input.focus();
       }
+
+      input.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") addlistItem();
+      });
+      btn.addEventListener("click", addlistItem);
     </script>
   </body>
 </html>
