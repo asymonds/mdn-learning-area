@@ -46,6 +46,7 @@
         listButton.textContent = "Delete";
 
         listButton.addEventListener("click", (e) => {
+          // list.removeChild(listItem) - Better way to do this, as supplied in solution files
           const target = e.target.parentElement;
           target.remove();
         });
